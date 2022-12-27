@@ -1,6 +1,7 @@
 package com.example.RegistrationForm.Controller;
 
 import com.example.RegistrationForm.Entity.Applicant;
+import com.example.RegistrationForm.PhoneNumber.Checkingdigits;
 import com.example.RegistrationForm.Service.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,5 +19,11 @@ public class ApplicantController {
 public void createApplicant(@RequestBody Applicant applicant){
     applicantService.createAnApplicant(applicant);
 }
+@Autowired
+    Checkingdigits checkingdigits;
+    @RequestMapping(value = "/applicants",method = RequestMethod.GET)
+    public void checkPhNum(@RequestBody String phone_no){
+        checkingdigits.isValid(phone_no);
+}}
 
-}
+
